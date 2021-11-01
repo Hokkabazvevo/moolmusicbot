@@ -80,7 +80,7 @@ Daha fazla bilgi için aşağıdaki butonları kullanın👇
                 ],
                 [
                     InlineKeyboardButton(
-                        "🌐 Özel bot yapımı", url="https://t.me/Baykaoss"
+                        "🌐 Özel bot yapımı", url="https://t.me/magandasahip"
                     )
                 ],
             ]
@@ -138,7 +138,7 @@ async def get_uptime(client: Client, message: Message):
 @Client.on_message(filters.command("help") & ~filters.private & ~filters.channel)
 async def ghelp(_, message: Message):
     await message.reply_text(
-        """ Özel bot yapmak için iletişim=> @Baykaoss
+        """ Özel bot yapmak için iletişim=> @magandasahip
 
 » /oynat => istediğin şarkıyı direk dinletir
 » /izlet => istedigin filmi indirip izletir
