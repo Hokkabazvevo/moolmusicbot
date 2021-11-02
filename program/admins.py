@@ -31,10 +31,10 @@ async def skip(client, m: Message):
         [
             [
                 InlineKeyboardButton(
-                    text="✨ ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"
+                    text="Grup 💬", url=f"https://t.me/{GROUP_SUPPORT}"
                 ),
                 InlineKeyboardButton(
-                    text="🌻 Kanal", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    text="Kanal 📣", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
@@ -44,18 +44,18 @@ async def skip(client, m: Message):
     if len(m.command) < 2:
         op = await skip_current_song(chat_id)
         if op == 0:
-            await m.reply("❌ şu anda hiç bir şey oynatılmıyor")
+            await m.reply("`Oynatılacak içerik yok.")
         elif op == 1:
-            await m.reply("✅ liste boş.\n\n• bot sesli sohbetten ayrılıyor")
+            await m.reply("`Liste boş olduğu için.\n\n Bot sesli sohbetten ayrılıyor...`")
         else:
             await m.reply_photo(
                 photo=f"{IMG_3}",
-                caption=f"⏭ **bir sonraki parçaya atlandı.**\n\n🏷 **isim:** [{op[0]}]({op[1]})\n💭 **sohbet:** `{chat_id}`\n💡 **durum:** `Playing`\n🎧 **Talep eden:** {m.from_user.mention()}",
+                caption=f"⏭ **Sonraki parçaya atlandı.**\n\n🏷 **isim:** [{op[0]}]({op[1]})\n💭 **sohbet:** `{chat_id}`\n💡 **durum:** `Playing`\n🎧 **Talep eden:** {m.from_user.mention()}",
                 reply_markup=keyboard,
             )
     else:
         skip = m.text.split(None, 1)[1]
-        OP = "🗑 **sıradan şarkı kaldırıldı:**"
+        OP = "`Şarkı sıradan kaldırıldı`"
         if chat_id in QUEUE:
             items = [int(x) for x in skip.split(" ") if x.isdigit()]
             items.sort(reverse=True)
@@ -72,7 +72,7 @@ async def skip(client, m: Message):
 
 
 @Client.on_message( 
-    command(["son", f"son@{BOT_USERNAME}", "end", f"end@{BOT_USERNAME}", "vson"]) & other_filters
+    command(["stop", f"stop@{BOT_USERNAME}", "end", f"end@{BOT_USERNAME}", "vstop"]) & other_filters
 )
 @authorized_users_only
 async def stop(client, m: Message):
@@ -81,15 +81,15 @@ async def stop(client, m: Message):
         try:
             await call_py.leave_group_call(chat_id)
             clear_queue(chat_id)
-            await m.reply("✅ **akış sona erdi.**")
+            await m.reply("`Bot kapatıldı görüşürüzzz ❤️😘`")
         except Exception as e:
-            await m.reply(f"🚫 **eror:**\n\n`{e}`")
+            await m.reply(f"**Error🚫:**\n\n`{e}`")
     else:
-        await m.reply("❌ **akışta hiç bir şey yok**")
+        await m.reply("`Oynatabileceğim bir içerik bulamadım 🤷`")
 
 
 @Client.on_message(
-    command(["durdur", f"durdur@{BOT_USERNAME}", "vdurdur"]) & other_filters
+    command(["pause", f"pause@{BOT_USERNAME}", "vpause"]) & other_filters
 )
 @authorized_users_only
 async def pause(client, m: Message):
@@ -103,11 +103,11 @@ async def pause(client, m: Message):
         except Exception as e:
             await m.reply(f"🚫 **hata:**\n\n`{e}`")
     else:
-        await m.reply("❌ **akışta hiç bir şey yok**")
+        await m.reply("`Atlanacak parça bulunamadı 🤷`")
 
 
 @Client.on_message(
-    command(["devam", f"devam@{BOT_USERNAME}", "vdevam"]) & other_filters
+    command(["resume", f"resume@{BOT_USERNAME}", "vresume"]) & other_filters
 )
 @authorized_users_only
 async def resume(client, m: Message):
@@ -116,12 +116,12 @@ async def resume(client, m: Message):
         try:
             await call_py.resume_stream(chat_id)
             await m.reply(
-                "▶️ **Parça devam ettirildi.**"
+                "`Parça oynatılıyor...`"
             )
         except Exception as e:
-            await m.reply(f"🚫 **hata:**\n\n`{e}`")
+            await m.reply(f"**Hata:🚫 **\n\n`{e}`")
     else:
-        await m.reply("❌ **akışta hiç bir şey yok**")
+        await m.reply("`Devam ettirebileceğim herhangi bir içerik yok 🥲..`")
 
 
 @Client.on_message(
@@ -133,6 +133,6 @@ async def change_volume(client, m: Message):
     chat_id = m.chat.id
     try:
         await call_py.change_volume_call(chat_id, volume=int(range))
-        await m.reply(f"✅ **volume set to** `{range}`%")
+        await m.reply(f"**Ses düzeyi değiştirildi! ✅** `{range}`%")
     except Exception as e:
-        await m.reply(f"🚫 **error:**\n\n{e}")
+        await m.reply(f"🚫 **Error:**\n\n{e}")
