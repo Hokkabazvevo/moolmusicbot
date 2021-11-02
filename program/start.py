@@ -53,7 +53,7 @@ async def _human_time_duration(seconds):
 async def start_(client: Client, message: Message):
     await message.reply_text(
         f"""✨ **Merhabalar {message.from_user.mention()} !**\n
-💭 [{BOT_NAME}](https://t.me/{BOT_USERNAME}) **botu ve asistanı gruba ekleyip güzel flim izleyebilir şarkılar dinleyebilirsiniz**
+💭 [{BOT_NAME}](https://t.me/{BOT_USERNAME}) **Botu gruba ekleyerek şarkı dinleyebilir, video izleyebilirsiniz.**
 
 Daha fazla bilgi için aşağıdaki butonları kullanın👇
 """,
@@ -61,26 +61,26 @@ Daha fazla bilgi için aşağıdaki butonları kullanın👇
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕",
+                        "Beni Grubuna Ekle ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("❓ Basit bilgi", callback_data="cbhowtouse")],
+                [InlineKeyboardButton("Bilgi", callback_data="cbhowtouse")],
                 [
                     InlineKeyboardButton("📚 Komutlar", callback_data="cbcmds"),
-                    InlineKeyboardButton("❤️ Sahip", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("🧑‍💻 Sahip", url=f"https://t.me/{OWNER_NAME}"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "Destek Grubu 🔰", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "Mool Rehber 📣", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                 ],
                 [
                     InlineKeyboardButton(
-                        "🌐 Özel bot yapımı", url="https://t.me/magandasahip"
+                        "Grubunuza Özel Bot Yaptırmak İçin", url="https://t.me/Zep_Unb"
                     )
                 ],
             ]
@@ -122,7 +122,7 @@ async def ping_pong(client: Client, message: Message):
     start = time()
     m_reply = await message.reply_text("pinging...")
     delta_ping = time() - start
-    await m_reply.edit_text("🏓 `PONG!!`\n" f"⚡️ `{delta_ping * 1000:.3f} ms`")
+    await m_reply.edit_text("🏓 `Poonggg!!`\n" f" `Bot {delta_ping * 1000:.3f} ms hızında çalışıyor.`")
 
 
 @Client.on_message(command(["uptime", f"uptime@{BOT_USERNAME}"]) & ~filters.edited)
@@ -138,20 +138,26 @@ async def get_uptime(client: Client, message: Message):
 @Client.on_message(filters.command("help") & ~filters.private & ~filters.channel)
 async def ghelp(_, message: Message):
     await message.reply_text(
-        """ Özel bot yapmak için iletişim=> @magandasahip
+        """Grubunuza özel bot yaptırmak için iletişim=> @Zep_Unb
 
-» /oynat => istediğin şarkıyı direk dinletir
-» /izlet => istedigin filmi indirip izletir
-» /ara => video indirir
+» /play => istediğin şarkıyı direk dinletir
+» /vplay => istedigin filmi indirip izletir
+» /search => video indirir
 » /indir => music indirir 
 
-NOT : /izlet ve /oynat komutu kendinize ait music ve videoları da oynatır
+NOT : /play komutu normal şarkı oynatır /vplay ise görüntülü içerik oynatır.
 
-» /durdur - seste botu durdurur
-» /devam - durdurulan botu başlatır
-» /atla - şarkı ve video atlar
-» /son - sesten düşer herşeyi durdurur
-» /reload - botu yeniden başlatıp admin listesi yeniler
-» /gel - gruba katılır
-» /git - gruptan çıkar """
+» /pause - Botu durdurur
+
+» /resume - Botu devam ettirir.
+
+» /skip - Bir sonraki şarkıya, videoya geçer.
+
+» /stop - sesten düşer herşeyi durdurur
+
+» /reload - Botu yeniden başlatır.
+
+» /katil - Gruba katılır.
+
+» /cik - Gruptan çıkar."""
         )
