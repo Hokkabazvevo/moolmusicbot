@@ -61,7 +61,7 @@ async def oynat(_, m: Message):
                     text="Destek Grubu 🔰", url=f"https://t.me/{GROUP_SUPPORT}"
                 ),
                 InlineKeyboardButton(
-                    text="Mool Kanal 📣", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    text="Mool Rehber 📣", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
@@ -157,7 +157,7 @@ async def oynat(_, m: Message):
                 "» reply to an **audio file** or **give something to search.**"
             )
         else:
-            suhu = await m.reply("🔎 **arıyor...**")
+            suhu = await m.reply("**Aranıyor...🔎**")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             if search == 0:
