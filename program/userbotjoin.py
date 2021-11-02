@@ -8,7 +8,7 @@ from pyrogram.errors import UserAlreadyParticipant
 
 
 @Client.on_message(
-    command(["katil", f"katil@{BOT_USERNAME}"]) & ~filters.private & ~filters.bot
+    command(["invite", f"invite@{BOT_USERNAME}"]) & ~filters.private & ~filters.bot
 )
 @authorized_users_only
 @errors
@@ -18,7 +18,7 @@ async def join_group(client, message):
         invitelink = await client.export_chat_invite_link(chid)
     except BaseException:
         await message.reply_text(
-            "• **iznim yok :**\n\n» ❌ __Kullanıcı ekle__",
+            "•:**\n\n» ❌ __Kullanıcı ekle__",
         )
         return
 
@@ -43,12 +43,12 @@ async def join_group(client, message):
     )
 
 
-@Client.on_message(command(["cik",
-                            f"cik@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+@Client.on_message(command(["leave",
+                            f"leave@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def leave_one(client, message):
     try:
-        await USER.send_message(message.chat.id, "✅ siktirip gidiyorum")
+        await USER.send_message(message.chat.id, "Bot gruptan ayrıldı.")
         await USER.leave_chat(message.chat.id)
     except BaseException:
         await message.reply_text(
