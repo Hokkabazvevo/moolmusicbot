@@ -101,9 +101,9 @@ async def cbbasic(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""🏮 Basit Komutlar:
 
-» /dinle => Şarkı dinlemenize yarar.
-» /izle => Film/video izlemenize yarar.
-» /ara => Video indirir.
+» /play => Şarkı dinlemenize yarar.
+» /vplay => Film/video izlemenize yarar.
+» /ra => Video indirir.
 » /indir => Müzik indirir. 
 
 © __Tüm hakları saklıdır {BOT_NAME} A.Ş__""",
@@ -128,7 +128,7 @@ async def cbadmin(_, query: CallbackQuery):
 
 » /reload - Botu yeniden başlatır.
 
-» /katıl - Bot gruba katılır.
+» /katil - Bot gruba katılır.
 
 » /cik - Bot gruptan çıkar.
 
