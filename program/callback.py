@@ -15,31 +15,31 @@ from config import (
 @Client.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""✨ **Hoşgeldin [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !**\n
-💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) yeni Telegram'ın görüntülü sohbetleri aracılığıyla gruplarda müzik ve video oynatmanıza olanak tanır!**
+        f"""👋__Hoşgeldin [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !__\n
+🤖 __[{BOT_NAME}](https://t.me/{BOT_USERNAME}) Telegramda film, dizi, video gibi görüntülü içerikleri izlemenize veya şarkı dinlemenize olanak sağlar.__**
 
-💡 **📚 Komutlar düğmesini tıklayarak Bot'un tüm komutlarını ve nasıl çalıştıklarını öğrenin!**
+ℹ __Komutlar butonuna tıklayarak bot komutlarını ve çalışma prensiplerine ulaşabilirsiniz.__
 
-🔖 **Bu botun nasıl kullanılacağını öğrenmek için lütfen tıklayın » ❓ Basit Komutlar!**""",
+🔖 __Botun kullanma talimatına ulaşmak için **Basit Komutlar** butonuna tıkla__""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕",
+                        "Beni Grubuna Ekle ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("❓ Basit komutlar", callback_data="cbhowtouse")],
+                [InlineKeyboardButton("Basit Komutlar", callback_data="cbhowtouse")],
                 [
-                    InlineKeyboardButton("📚 Komutlar", callback_data="cbcmds"),
-                    InlineKeyboardButton(" Sahibi ", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("📜 Komutlar", callback_data="cbcmds"),
+                    InlineKeyboardButton("👨‍💻 Bot Sahibi ", url=f"https://t.me/{OWNER_NAME}"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "Destek Grubu 🔰", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📣 Official Kanal", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "Mool Bot Kanal 📣", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                 ],
             ]
@@ -51,19 +51,25 @@ async def cbstart(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbhowtouse"))
 async def cbguides(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""❓ **Bu botu kullanmak için temel anlatım:**
-1.) **Önce beni grubunuza ekleyin.**
-2.) **O zaman beni yönetici olarak yükselt ve Anonim Yönetici hariç tüm izinleri ver.**
-3.) **Beni terfi ettirdikten sonra, yönetici verilerini yenilemek için /reload in group yazın.**
-3.) **Grubunuza @{ASSISTANT_NAME} ekleyin veya onu davet etmek için /userbotjoin yazın.**
-4.) **Video/müzik oynatmaya başlamadan önce görüntülü sohbeti açın.**
-5.) **Bazen /reload komutunu kullanarak botu yeniden yüklemek bazı sorunları çözmenize yardımcı olabilir.**
+        f"""**Botu kullanmak için basit bilgi**
 
-💡 **Bu bot hakkında takip eden bir sorunuz varsa, bunu buradaki destek sohbetimde iletebilirsiniz. [MAGANDASAHİP](https://t.me/magandasahip)**
+__İlk olarak beni grubunuza ekleyin.__
 
-⚡ __Powered by {BOT_NAME} A.I__""",
+__Grupta daha stabil çalışabilmem için gerekli olan yetkileri verin.__
+
+__Yetki verdikten sonra verilerini yenilemek için grubunuzda /reload komutunu çalıştırın.__
+
+__Grubunuza @{ASSISTANT_NAME} asistan botunu ekleyin veya onu davet etmek için grubunuzda /userbotjoin yazın.__
+
+__Video/Müzik oynatmaya başlamadan önce görüntülü sohbeti açın.__
+
+__Botun bozulma ya da takılma sorunları olması durumunda /reload komutunu kullanın.__
+
+__Bot hakkında sorunuz, öneriniz varsa ya da grubunuza özel bot yaptırmak istiyorsanız iletişim. [Zephyrus](https://t.me/Zep_Unb)**
+
+⚡ __Tüm hakları saklıdır. {BOT_NAME} A.Ş__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Geri", callback_data="cbstart")]]
+            [[InlineKeyboardButton("Geri 🔙", callback_data="cbstart")]]
         ),
     )
 
@@ -71,19 +77,19 @@ async def cbguides(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbcmds"))
 async def cbcmds(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""✨ **Merhaba [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !**
+        f"""✨ **Selam [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) hangi komutu seçmek istiyorsun?**
 
 
-⚡ __Powered by {BOT_NAME} A.I__""",
+© __Tüm hakları saklıdır. {BOT_NAME} A.Ş__""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("👷🏻 Admin komut", callback_data="cbadmin"),
-                    InlineKeyboardButton("🧙🏻 sahip ", callback_data="cbsudo"),
+                    InlineKeyboardButton("👷🏻 Admin Komutları", callback_data="cbadmin"),
+                    InlineKeyboardButton("🧙🏻 Sahip ", callback_data="cbsudo"),
                 ],[
-                    InlineKeyboardButton("📚 Basic komut", callback_data="cbbasic")
+                    InlineKeyboardButton("📚 Basit Komutlar", callback_data="cbbasic")
                 ],[
-                    InlineKeyboardButton("🔙 geri", callback_data="cbstart")
+                    InlineKeyboardButton("Geri 🔙", callback_data="cbstart")
                 ],
             ]
         ),
@@ -93,16 +99,16 @@ async def cbcmds(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbbasic"))
 async def cbbasic(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""🏮 basit komutlar:
+        f"""🏮 Basit Komutlar:
 
-» /oynat => istediğin şarkıyı direk dinletir
-» /izlet => istedigin filmi indirip izletir
-» /ara => video indirir
-» /indir => music indirir 
-NOT : /izlet ve /oynat komutu kendinize ait music ve videoları da oynatır 
-⚡️ __Powered by {BOT_NAME} AI__""",
+» /dinle => Şarkı dinlemenize yarar.
+» /izle => Film/video izlemenize yarar.
+» /ara => Video indirir.
+» /indir => Müzik indirir. 
+
+© __Tüm hakları saklıdır {BOT_NAME} A.Ş__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 geri", callback_data="cbcmds")]]
+            [[InlineKeyboardButton("Geri 🔙", callback_data="cbcmds")]]
         ),
     )
 
@@ -110,31 +116,36 @@ NOT : /izlet ve /oynat komutu kendinize ait music ve videoları da oynatır
 @Client.on_callback_query(filters.regex("cbadmin"))
 async def cbadmin(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""🏮 admin komutları:
+        f"""Admin Komutları
 
-» /durdur - seste botu durdurur
-» /devam - durdurulan botu başlatır
-» /atla - şarkı ve video atlar
-» /son - sesten düşer herşeyi durdurur
-» /reload - botu yeniden başlatıp admin listesi yeniler
-» /Gel - gruba katılır
-» /git - gruptan çıkar
+» /pause - Botu durdurur.
 
-⚡️ __Powered by {BOT_NAME} AI__""",
+» /resume - Botu devam ettirir.
+
+» /skip - Sonraki şarkıya geçer.
+
+» /stop - Botu kapatır.
+
+» /reload - Botu yeniden başlatır.
+
+» /katıl - Bot gruba katılır.
+
+» /cik - Bot gruptan çıkar.
+
+© __Tüm hakları saklıdır. {BOT_NAME} A.Ş__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Geri", callback_data="cbcmds")]]
+            [[InlineKeyboardButton("Geri 🔙", callback_data="cbcmds")]]
         ),
     )
 
 @Client.on_callback_query(filters.regex("cbsudo"))
 async def cbsudo(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""🏮 here is the sudo commands:
-BUNLARI SEN YAPAMAZSIN BOŞA GELDİN GERİ GİT
+        f"""@Zep_Unb
 
-⚡ __Powered by {BOT_NAME} AI__""",
+© __Tüm hakları saklıdır. {BOT_NAME} A.Ş__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Geri", callback_data="cbcmds")]]
+            [[InlineKeyboardButton("Geri 🔙", callback_data="cbcmds")]]
         ),
     )
 
