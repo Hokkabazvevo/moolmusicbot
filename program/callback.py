@@ -39,7 +39,7 @@ async def cbstart(_, query: CallbackQuery):
                         "Destek Grubu 🔰", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "Mool Bot Kanal 📣", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "Mool Rehber 📣", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                 ],
             ]
