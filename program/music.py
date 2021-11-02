@@ -101,7 +101,7 @@ async def oynat(_, m: Message):
                 await suhu.delete()
                 await m.reply_photo(
                     photo=f"{IMG_2}",
-                    caption=f"**Müzk başlatıldı.**\n\n🏷 **Müzk İsmi:** [{songname}]({link})\n💭 **Sohbet:** `{chat_id}`\n💡 **Durum:** `Playing`\n🎧 **İsteyen:** {m.from_user.mention()}",
+                    caption=f"**Müzk başlatıldı.**\n\n🏷 **Müzk İsmi:** [{songname}]({link})\n💭 **Sohbet:** `{chat_id}`\n💡 **Durum:** `Oynatılıyor`\n🎧 **İsteyen:** {m.from_user.mention()}",
                     reply_markup=keyboard,
                 )
         else:
@@ -145,7 +145,7 @@ async def oynat(_, m: Message):
                                 await suhu.delete()
                                 await m.reply_photo(
                                     photo=f"{IMG_2}",
-                                    caption=f"Müzik başlatıldı.**\n\n🏷 **Şarkı İsmi:** [{songname}]({url})\n💭 **Sohbet:** `{chat_id}`\n💡 **Durum:** `Playing`\n🎧 **İsteyen:** {m.from_user.mention()}",
+                                    caption=f"Müzik başlatıldı.**\n\n🏷 **Şarkı İsmi:** [{songname}]({url})\n💭 **Sohbet:** `{chat_id}`\n💡 **Durum:** `Oynatılıyor`\n🎧 **İsteyen:** {m.from_user.mention()}",
                                     reply_markup=keyboard,
                                 )
                             except Exception as ep:
@@ -190,7 +190,7 @@ async def oynat(_, m: Message):
                             await suhu.delete()
                             await m.reply_photo(
                                 photo=f"{IMG_2}",
-                                caption=f"**Müzik başlatıltı.**\n\n🏷 **Şarkı İsmi:** [{songname}]({url})\n💭 **Sohbet:** `{chat_id}`\n💡 **Durum:** `Playing`\n🎧 **İsteyen:** {m.from_user.mention()}",
+                                caption=f"**Müzik başlatıltı.**\n\n🏷 **Şarkı İsmi:** [{songname}]({url})\n💭 **Sohbet:** `{chat_id}`\n💡 **Durum:** `Oynatılıyor`\n🎧 **İsteyen:** {m.from_user.mention()}",
                                 reply_markup=keyboard,
                             )
                         except Exception as ep:
@@ -254,7 +254,7 @@ async def radio(_, m: Message):
                     await suhu.delete()
                     await m.reply_photo(
                         photo=f"{IMG_2}",
-                        caption=f"💡 **[Radio live]({link}) akış başladı.**\n\n💭 **Sohbet:** `{chat_id}`\n💡 **Durum:** `Playing`\n🎧 **İsteyen:** {m.from_user.mention()}",
+                        caption=f"💡 **[Radio live]({link}) akış başladı.**\n\n💭 **Sohbet:** `{chat_id}`\n💡 **Durum:** `Oynatılıyor`\n🎧 **İsteyen:** {m.from_user.mention()}",
                         reply_markup=keyboard,
                     )
                 except Exception as ep:
