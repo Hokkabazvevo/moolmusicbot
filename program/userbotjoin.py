@@ -8,7 +8,7 @@ from pyrogram.errors import UserAlreadyParticipant
 
 
 @Client.on_message(
-    command(["gel", f"gel@{BOT_USERNAME}"]) & ~filters.private & ~filters.bot
+    command(["katil", f"katil@{BOT_USERNAME}"]) & ~filters.private & ~filters.bot
 )
 @authorized_users_only
 @errors
@@ -18,7 +18,7 @@ async def join_group(client, message):
         invitelink = await client.export_chat_invite_link(chid)
     except BaseException:
         await message.reply_text(
-            "• **iznim yok :**\n\n» ❌ __Kullaıcı ekle__",
+            "• **iznim yok :**\n\n» ❌ __Kullanıcı ekle__",
         )
         return
 
@@ -39,12 +39,12 @@ async def join_group(client, message):
         )
         return
     await message.reply_text(
-        f"✅ **hop hop geldim laaann**",
+        f"`Bot gruba başarıyla katıldı✅`",
     )
 
 
-@Client.on_message(command(["git",
-                            f"git@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+@Client.on_message(command(["cik",
+                            f"cik@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def leave_one(client, message):
     try:
@@ -77,7 +77,7 @@ async def leave_all(client, message):
         except BaseException:
             failed += 1
             await lol.edit(
-                f"Userbot leaving...\n\nLeft: {left} chats.\nFailed: {failed} chats."
+                f"Userbot ayrılıyor...\n\nLeft: {left} chats.\nFailed: {failed} chats."
             )
         await asyncio.sleep(0.7)
     await client.send_message(
