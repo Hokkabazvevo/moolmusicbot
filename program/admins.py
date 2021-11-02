@@ -19,11 +19,11 @@ async def update_admin(client, message):
         new_admins.append(u.user.id)
     admins[message.chat.id] = new_admins
     await message.reply_text(
-        "✅ Bot **yeniden başlatıldı !**\n✅ **Admin listesi**  **güncellendi !**"
+        "`Bot yeniden başlatıldı!✅`"
     )
 
 
-@Client.on_message(command(["atla", f"atla@{BOT_USERNAME}", "vatla"]) & other_filters)
+@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "vskip"]) & other_filters)
 @authorized_users_only
 async def skip(client, m: Message):
 
@@ -44,13 +44,13 @@ async def skip(client, m: Message):
     if len(m.command) < 2:
         op = await skip_current_song(chat_id)
         if op == 0:
-            await m.reply("`Oynatılacak içerik yok.")
+            await m.reply("`Oynatılacak içerik yok.`")
         elif op == 1:
-            await m.reply("`Liste boş olduğu için.\n\n Bot sesli sohbetten ayrılıyor...`")
+            await m.reply("`Liste boş olduğu için. Bot sesli sohbetten ayrıldı...`")
         else:
             await m.reply_photo(
                 photo=f"{IMG_3}",
-                caption=f"⏭ **Sonraki parçaya atlandı.**\n\n🏷 **isim:** [{op[0]}]({op[1]})\n💭 **sohbet:** `{chat_id}`\n💡 **durum:** `Playing`\n🎧 **Talep eden:** {m.from_user.mention()}",
+                caption=f"⏭ **Sonraki parçaya atlandı.**\n\n **Şarkı İsmi:** [{op[0]}]({op[1]})\n💭 **sohbet:** `{chat_id}`\n💡 **Durum:** `Oynatılıyor`\n🎧 **İsteyen:** {m.from_user.mention()}",
                 reply_markup=keyboard,
             )
     else:
@@ -72,7 +72,7 @@ async def skip(client, m: Message):
 
 
 @Client.on_message( 
-    command(["stop", f"stop@{BOT_USERNAME}", "end", f"end@{BOT_USERNAME}", "vstop"]) & other_filters
+    command(["stop", f"stop@{BOT_USERNAME}", "stop", f"stop@{BOT_USERNAME}", "vstop"]) & other_filters
 )
 @authorized_users_only
 async def stop(client, m: Message):
@@ -85,7 +85,7 @@ async def stop(client, m: Message):
         except Exception as e:
             await m.reply(f"**Error🚫:**\n\n`{e}`")
     else:
-        await m.reply("`Oynatabileceğim bir içerik bulamadım 🤷`")
+        await m.reply("`Bot zaten aktif değil. 🤷`")
 
 
 @Client.on_message(
@@ -98,12 +98,12 @@ async def pause(client, m: Message):
         try:
             await call_py.pause_stream(chat_id)
             await m.reply(
-                "⏸ **Parça duraklatıldı.**"
+                "`Bot başarıyla durduruldu.`"
             )
         except Exception as e:
             await m.reply(f"🚫 **hata:**\n\n`{e}`")
     else:
-        await m.reply("`Atlanacak parça bulunamadı 🤷`")
+        await m.reply("`Durdurulacak bir şey bulunamadı. 🤷`")
 
 
 @Client.on_message(
