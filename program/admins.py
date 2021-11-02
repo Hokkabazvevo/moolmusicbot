@@ -31,10 +31,10 @@ async def skip(client, m: Message):
         [
             [
                 InlineKeyboardButton(
-                    text="Grup 💬", url=f"https://t.me/{GROUP_SUPPORT}"
+                    text="Destek Grubu 🔰", url=f"https://t.me/{GROUP_SUPPORT}"
                 ),
                 InlineKeyboardButton(
-                    text="Kanal 📣", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    text="Mool Rehber 📣", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
