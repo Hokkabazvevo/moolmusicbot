@@ -100,9 +100,9 @@ async def alive(client: Client, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("✨ Group", url=f"https://t.me/{GROUP_SUPPORT}"),
+                InlineKeyboardButton("Destek Grubu 🔰", url=f"https://t.me/{GROUP_SUPPORT}"),
                 InlineKeyboardButton(
-                    "📣 kanal", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    "Mool Rehber 📣", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
@@ -148,16 +148,10 @@ async def ghelp(_, message: Message):
 NOT : /play komutu normal şarkı oynatır /vplay ise görüntülü içerik oynatır.
 
 » /pause - Botu durdurur
-
 » /resume - Botu devam ettirir.
-
 » /skip - Bir sonraki şarkıya, videoya geçer.
-
 » /stop - sesten düşer herşeyi durdurur
-
 » /reload - Botu yeniden başlatır.
-
 » /katil - Gruba katılır.
-
 » /cik - Gruptan çıkar."""
         )
