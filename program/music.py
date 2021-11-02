@@ -58,10 +58,10 @@ async def oynat(_, m: Message):
         [
             [
                 InlineKeyboardButton(
-                    text="✨ ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"
+                    text="Destek Grubu 🔰", url=f"https://t.me/{GROUP_SUPPORT}"
                 ),
                 InlineKeyboardButton(
-                    text="🌻 kanal", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    text="Mool Kanal 📣", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
