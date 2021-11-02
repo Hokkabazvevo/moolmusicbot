@@ -102,8 +102,11 @@ async def cbbasic(_, query: CallbackQuery):
         f"""🏮 Basit Komutlar:
 
 » /play => Şarkı dinlemenize yarar.
+
 » /vplay => Film/video izlemenize yarar.
-» /ra => Video indirir.
+
+» /ara => Video indirir.
+
 » /indir => Müzik indirir. 
 
 © __Tüm hakları saklıdır {BOT_NAME} A.Ş__""",
