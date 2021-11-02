@@ -38,7 +38,7 @@ ydl_opts = {
 @Client.on_message(command(["indir", f"indir@{bn}"]) & ~filters.edited)
 def song(_, message):
     query = " ".join(message.command[1:])
-    m = message.reply("🔎 şarkı aranıyor ...")
+    m = message.reply("`Şarkı aranıyor...`")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -51,10 +51,10 @@ def song(_, message):
         duration = results[0]["duration"]
 
     except Exception as e:
-        m.edit("❌ şarkı bulunamadı.\n\nlütfen geçerli bir şarkı adı verin.")
+        m.edit("`Şarkı bulunamadı.\n\nLütfen geçerli bir isim yazın.`")
         print(str(e))
         return
-    m.edit("📥 dosya indiriliyor...")
+    m.edit("`Dosya indiriliyor...📥`")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -65,7 +65,7 @@ def song(_, message):
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit("📤 dosya yükleniyor...")
+        m.edit("`Dosya yükleniyor...`")
         message.reply_audio(
             audio_file,
             caption=rep,
@@ -76,7 +76,7 @@ def song(_, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ hata, bot sahibinin düzeltmesini bekleyin")
+        m.edit")
         print(e)
 
     try:
@@ -271,14 +271,14 @@ async def vsong(client, message):
 async def lyrics(_, message):
     try:
         if len(message.command) < 2:
-            await message.reply_text("» **give a lyric name too.**")
+            await message.reply_text("» **Şarkı sözlerini yaz.**")
             return
         query = message.text.split(None, 1)[1]
-        rep = await message.reply_text("🔎 **searching lyrics...**")
+        rep = await message.reply_text("🔎 **Şarkı aranıyor...**")
         resp = requests.get(
             f"https://api-tede.herokuapp.com/api/lirik?l={query}"
         ).json()
         result = f"{resp['data']}"
         await rep.edit(result)
     except Exception:
-        await rep.edit("❌ **lyrics not found.**\n\n» **please give a valid song name.**")
+        await rep.edit("❌ **Sözler bulunamadı.**\n\n» **please give a valid song name.**")
